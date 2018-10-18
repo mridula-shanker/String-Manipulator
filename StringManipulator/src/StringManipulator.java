@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author mshanker22
+ *
+ */
 public class StringManipulator 
 {
 	public String reverse(String str)

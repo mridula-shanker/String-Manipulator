@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class UserStringManipulator 
@@ -7,29 +8,41 @@ public class UserStringManipulator
 	{
 		StringManipulator SM  = new StringManipulator();
 		Scanner in = new Scanner(System.in);
-		String tryStr="Y";
+		String tryStr="y";
 		String manString = "";
 		
-		while (tryStr.equals("Y"))
+		while (tryStr.equals("y"))
 		{
-			System.out.println("Which method would you like to use? (Reverse - Rev; Replace - Rep)"); 
-			String methodStr = in.next();
-			System.out.println("Please enter the string you would like to manipulate: ");
-			String origString = in.next();
-			if (methodStr.equals("Rev"))
+			System.out.print("Which method would you like to use? (Reverse - rev; Replace - rep)"); 
+			String methodStr = in.nextLine();
+			
+			while(!methodStr.equals("rev") && !methodStr.equals("rep"))
+			{
+				System.out.print("Please enter a valid method");
+				methodStr = in.nextLine();
+			}
+			
+			System.out.print("Please enter the string you would like to manipulate: ");
+			String origString = in.nextLine();
+			if (methodStr.equals("rev"))
 			{	
-				System.out.println("Working on Rev");
 				manString = SM.reverse(origString);
 			}	
 			else
 			{
-				System.out.println("Working on Replace");
 				manString = SM.noVowels(origString);
 			}
 			
 			System.out.println(manString);
-			System.out.println("Do you want to try again? (Y / N): ");
+			System.out.print("Do you want to try again? (y / n): ");
 			tryStr = in.next();
+			
+			while(!tryStr.equals("y") && !tryStr.equals("n"))
+			{
+				System.out.print("Please reenter y or n");
+				tryStr = in.next();
+			}
+			
 		}
 		
 	}
